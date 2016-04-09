@@ -65,3 +65,13 @@ def predict(name):
 
 	return preds
 
+
+while True:
+	print "enter any name"
+	n = raw_input()
+	v = predict(n)
+	if v[0] > v[1]:
+		print "Male"
+	else:
+		print "Female"
+
