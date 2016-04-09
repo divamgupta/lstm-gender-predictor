@@ -4,6 +4,7 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Activation, Dropout
 from keras.layers.recurrent import LSTM
 from keras.utils.data_utils import get_file
+from keras.models import model_from_json
 import numpy as np
 import random
 import sys
@@ -76,8 +77,15 @@ model.add(Dropout(0.2))
 model.add(Dense(2))
 model.add(Activation('softmax'))
 
-
 model.compile(loss='binary_crossentropy', optimizer='rmsprop')
+
+
+json_string = model.to_json()
+
+with open("model.json", "w") as text_file:
+    text_file.write(json_string)
+
+
 model.fit(X, y, batch_size=16, nb_epoch=nEpochs)
 model.save_weights('my_model_weights.h5')
 
