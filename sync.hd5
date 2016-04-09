@@ -1,0 +1,6 @@
+#!/usr/bin/expect
+
+spawn rsync -a ./ divam@192.168.1.11:~/Desktop/gender_predict
+expect "password"
+send "1234divam\r"
+interact
