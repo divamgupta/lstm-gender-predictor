@@ -1,16 +1,8 @@
-
-
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation, Dropout
 from keras.layers.recurrent import LSTM
-from keras.utils.data_utils import get_file
-from keras.models import model_from_json
 import numpy as np
-import random
-import sys
 
-
-from keras.layers import Embedding
 
 nEpochs = 10
 weightsFileName = "gender_weights.h5"

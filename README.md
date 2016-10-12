@@ -13,4 +13,4 @@ To train the model:
 
 Command to see test the trained results:
 
-`python genderAPI.py` 
+`python genderAPI.py <male_textfile> <female_textfile>` 
