@@ -1,8 +1,9 @@
 from keras.models import model_from_json
+import numpy as np
 import sys
 
 
-def predict(name, maxlen, char, char_indices):
+def predict(model, name, maxlen, chars, char_indices):
 	x = np.zeros((1, maxlen, len(chars)))
 	for t, char in enumerate(name):
 		x[0, t, char_indices[char]] = 1
@@ -38,15 +39,15 @@ def load_model(maleFile, femaleFile):
 
 	model = model_from_json(json_string)
 	model.load_weights('my_model_weights.h5')
-	return maxlen ,chars ,char_indices
+	return model, maxlen ,chars ,char_indices
 
 
 if __name__ == "__main__":
-	maxlen, char, char_indices = load_model(sys.argv[1], sys.argv[2])
+	model, maxlen, chars, char_indices = load_model(sys.argv[1], sys.argv[2])
 	while True:
 		print "Enter any name:"
 		n = raw_input()
-		v = predict(n, max, char, char_indices)
+		v = predict(model, n, maxlen, chars, char_indices)
 		if v[0] > v[1]:
 			print "Male"
 		else:
