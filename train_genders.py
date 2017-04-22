@@ -78,7 +78,7 @@ with open("model.json", "w") as text_file:
     text_file.write(json_string)
 
 
-model.fit(X, y, batch_size=16, nb_epoch=nEpochs)
+model.fit(X, y, batch_size=16, epochs=nEpochs)
 model.save_weights('my_model_weights.h5')
 
 print "done and weights saved"
