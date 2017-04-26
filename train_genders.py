@@ -1,6 +1,7 @@
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation, Dropout
 from keras.layers.recurrent import LSTM
+from keras import __version__ as keras_version
 import numpy as np
 
 
@@ -78,7 +79,11 @@ with open("model.json", "w") as text_file:
     text_file.write(json_string)
 
 
-model.fit(X, y, batch_size=16, epochs=nEpochs)
+if keras_version[0] == '1':
+	model.fit(X, y, batch_size=16, nb_epoch=nEpochs)
+else:
+	model.fit(X, y, batch_size=16, epochs=nEpochs)
+
 model.save_weights('my_model_weights.h5')
 
 print "done and weights saved"
